@@ -1,6 +1,6 @@
 using System;
 
-namespace entra21_tests
+namespace Domain
 {
     public class Candidate
     {

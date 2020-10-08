@@ -2,20 +2,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System;
 
-namespace entra21_tests
+namespace Domain
 {
     public class Election
     {
-        private List<Candidate> candidates {get; set;}
+        //candidates é uma propriedade private.
+        //prop é o atalho para criar propriedades.
+        private List<Candidate> candidates {get; set;} 
 
         public IReadOnlyCollection<Candidate> Candidates => candidates;
-        
+
+        //ctor é  comando para criar construtores.        
         public Election()
         {
             candidates = new List<Candidate>();
         }
         
-        public bool CreateCandidates(List<(string name, string cpf)> candidatesInput, string password)
+        public bool CreateCandidates(List<Candidate> candidatesInput, string password)
         {
             if (password == "Pa$$w0rd")
             {
@@ -23,7 +26,7 @@ namespace entra21_tests
                 {
                     return true;
                 }
-                candidates = candidatesInput.Select(candidate => {return new Candidate(candidate.name, candidate.cpf);}).ToList();
+                candidates = candidatesInput.Select(candidate => {return new Candidate(candidate.Name, candidate.Cpf);}).ToList();
                 return true;
             }
             else
