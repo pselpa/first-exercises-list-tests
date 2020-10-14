@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 
 namespace Domain
 {
@@ -20,20 +21,15 @@ namespace Domain
             this.Votes = 0;
         }
 
-        public void Vote()
-        {
-            Votes++;
-        }
-
-
+        
         public bool Validate()
         {
-            if (string.IsNullOrEmpty(CPF))
+            if (string.IsNullOrEmpty(Cpf))
             {
                 return false;
             }
 
-            var cpf = CPF.Replace(".", "").Replace("-", "");
+            var cpf = Cpf.Replace(".", "").Replace("-", "");
             
             if (cpf.Length != 11)
             {
@@ -92,6 +88,15 @@ namespace Domain
             }
 
             return false;
+        }
+
+        public void Vote()
+        {
+            if (Validate() != false)
+            {
+                Votes++;
+            }
+            
         }
     }
 }
