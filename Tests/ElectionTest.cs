@@ -151,34 +151,6 @@ namespace Tests
             Assert.Equal(3, candidateRafael.Votes);
             Assert.Equal(1, candidateFernanda.Votes);
         }
-        
-
-        [Theory]
-        // [InlineData("", 0)]
-        [InlineData("1234", 0)]
-        [InlineData("aaaa", 0)]
-        [InlineData("R4fael", 0)]
-        [InlineData("Raf@el", 0)]
-        [InlineData("Rafael_", 0)]
-        [InlineData("Rafael Santos", 0)]
-        public void Should_return_false_and_not_vote_when_name_is_invalid(string name, int expected)
-        {
-            // Dado / Setup
-            // OBJETO election
-            var election = new Election();
-            var johnDoe = new Candidate(name, "123.456.789.10");
-            var candidatesInput = new List<Candidate>{johnDoe};
-
-            election.CreateCandidates(candidatesInput, "Pa$$w0rd");
-
-            // Quando / Ação
-            var voteResult = election.Vote(johnDoe.Cpf);
-            var candidatejohnDoe = election.Candidates.First(x => x.Cpf == johnDoe.Cpf);
-
-            // Deve / Asserções
-            Assert.Equal(expected, candidatejohnDoe.Votes);
-        }
-
 
         [Fact]
         public void should_return_null_when_the_password_is_wrong()
